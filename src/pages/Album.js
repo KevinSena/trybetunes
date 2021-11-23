@@ -18,7 +18,7 @@ class Album extends Component {
     this.gettingReq();
   }
 
-  gettingReq = async () => {
+  gettingReq = () => {
     const { location } = this.props;
     const albumId = location.pathname.split('/')[2];
     getMusics(albumId).then((data) => this.setState({
