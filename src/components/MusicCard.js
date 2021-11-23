@@ -18,17 +18,13 @@ class MusicCard extends Component {
 
   favoritedSongs = () => {
     const { trackId } = this.props;
-    // this.setState({
-    //   submited: true,
-    // });
     getFavoriteSongs().then((included) => this.setState({
-      // submited: false,
-      favorited: included.some((e) => e.trackId === trackId),
+      favorited: included && included.some((e) => e.trackId === trackId),
     }));
   }
 
   render() {
-    const { previewUrl, trackName, trackId, music, update } = this.props;
+    const { previewUrl, trackName, trackId, music } = this.props;
     const { submited, favorited } = this.state;
     return (
       <div className="flex">
@@ -53,7 +49,7 @@ class MusicCard extends Component {
               }))
                 : addSong(music)).then(() => this.setState({
                 submited: false,
-              })).then(() => update());
+              }));
             } }
           />
           { submited ? 'Carregando...' : 'Favorita' }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
-import MusicCard from '../components/MusicCard';
+import MusicCardFav from '../components/MusicCardFav';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Favorites extends Component {
@@ -32,13 +32,12 @@ class Favorites extends Component {
             favorited.map((obj, index) => {
               const { previewUrl, trackName, trackId } = obj;
               return (
-                <MusicCard
+                <MusicCardFav
                   key={ index }
                   previewUrl={ previewUrl }
                   trackName={ trackName }
                   trackId={ trackId }
                   music={ obj }
-                  update={ this.gettingReq }
                 />
               );
             }))
