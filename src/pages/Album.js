@@ -38,15 +38,18 @@ class Album extends Component {
         </div>
         <div>
           {
-            result.length > 0 && result.map(({ previewUrl, trackName }, index) => (
-              index > 0 && (
+            result.length > 0 && result.map((e, index) => {
+              const { previewUrl, trackName, trackId } = e;
+              return (index > 0 && (
                 <MusicCard
                   key={ index }
                   previewUrl={ previewUrl }
                   trackName={ trackName }
+                  trackId={ trackId }
+                  music={ e }
                 />
-              )
-            ))
+              ));
+            })
           }
         </div>
       </div>
