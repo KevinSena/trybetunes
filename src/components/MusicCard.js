@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class MusicCard extends Component {
   constructor() {
@@ -8,12 +8,28 @@ class MusicCard extends Component {
 
     this.state = {
       submited: false,
+      favorited: false,
     };
+  }
+
+  componentDidMount() {
+    this.favoriitedSongs();
+  }
+
+  favoriitedSongs = () => {
+    const { trackId } = this.props;
+    this.setState({
+      submited: true,
+    });
+    getFavoriteSongs().then((included) => this.setState({
+      submited: false,
+      favorited: included.some((e) => e.trackId === trackId),
+    }));
   }
 
   render() {
     const { previewUrl, trackName, trackId, music } = this.props;
-    const { submited } = this.state;
+    const { submited, favorited } = this.state;
     return (
       <div className="flex">
         <p className="self-center">{trackName}</p>
@@ -22,17 +38,18 @@ class MusicCard extends Component {
         </audio>
         <label htmlFor={ trackId }>
           <input
+            checked={ favorited }
             data-testid={ `checkbox-music-${trackId}` }
             type="checkbox"
             id={ trackId }
-            onClick={ async () => {
+            onChange={ this.favoriitedSongs }
+            onClick={ () => {
               this.setState({
                 submited: true,
               });
-              await addSong(music);
-              this.setState({
+              addSong(music).then(() => this.setState({
                 submited: false,
-              });
+              }));
             } }
           />
           { submited ? 'Carregando...' : 'Favorita' }
