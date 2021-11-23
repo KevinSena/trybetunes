@@ -28,7 +28,7 @@ class MusicCard extends Component {
   }
 
   render() {
-    const { previewUrl, trackName, trackId, music } = this.props;
+    const { previewUrl, trackName, trackId, music, update } = this.props;
     const { submited, favorited } = this.state;
     return (
       <div className="flex">
@@ -53,7 +53,7 @@ class MusicCard extends Component {
               }))
                 : addSong(music)).then(() => this.setState({
                 submited: false,
-              }));
+              })).then(() => update());
             } }
           />
           { submited ? 'Carregando...' : 'Favorita' }
