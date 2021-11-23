@@ -42,7 +42,7 @@ class Header extends Component {
           w-full"
         >
           <div className="w-28">
-            <img src="./headerLogo.png" alt="branch" />
+            <img src="https://s3-alpha-sig.figma.com/img/b9aa/b33b/90cfc7e08c97fce6f1d6e8abbfff6e6e?Expires=1638748800&Signature=RwsZVKrJOxbLdLkxy4mRU~3fBIbhioBK2vXiPWWLkghXWxhPRrMjwYvgcrWcUGKw8dE6d5FZuOSpxxIGp7VJA32noxfjjENI30DdQAxIn3E5HwqVR~Dbx4D80fhu0pKIShfzHoq8IQBPSX1n5kV47L0andrPmOwUwXUXwLPPrPSxysjMfyoFv-y2GGb-BZkmd~O8o4hBH4agVFzYW9nfgl2AXdocWthS~VEsKiCfBlkeRPxTHa0Bd-DPGnHq3wkeWuCA6KfZgy0Ykozrr79bUnBjZscpKK6WMvKyyivE3ipO0yzLUKfuDnPtg6y0hCQJBrzNJ2M94rzGvbAE2JWs9Q__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA" alt="branch" />
           </div>
           <div
             className="
