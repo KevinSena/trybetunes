@@ -58,6 +58,7 @@ class Profile extends Component {
                   alt={ name }
                   data-testid="profile-image"
                   className="
+                  w-40
                   p-6
                   text-6xl
                   rounded-full
@@ -68,21 +69,26 @@ class Profile extends Component {
             <Link
               to="/profile/edit"
               className="
+              border
+              border-blue-500
+              rounded
+              text-blue-500
+              p-2
               self-center"
             >
               Editar perfil
             </Link>
           </div>
           <div className="flex flex-col">
-            <h3>Nome:</h3>
+            <h3 className="mt-10">Nome:</h3>
             <p>
               { name === '' ? loadText : name }
             </p>
-            <h3>Email:</h3>
+            <h3 className="mt-10">Email:</h3>
             <p>
               { email === '' ? loadText : email }
             </p>
-            <h3>Descrição:</h3>
+            <h3 className="mt-10">Descrição:</h3>
             <p>
               { description === '' ? loadText : description }
             </p>
