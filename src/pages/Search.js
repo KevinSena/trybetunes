@@ -43,7 +43,7 @@ class Search extends Component {
           <input
             name="search"
             type="search"
-            placeholder="Nome do Album"
+            placeholder="Nome do Artista"
             data-testid="search-artist-input"
             value={ search }
             onChange={ this.changeHandler }
