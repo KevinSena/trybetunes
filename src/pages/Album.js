@@ -31,26 +31,33 @@ class Album extends Component {
     return (
       <div data-testid="page-album">
         <Header />
-        <div>
-          <img src={ result[0].artworkUrl100 } alt={ result[0].collectionName } />
-          <h2 data-testid="album-name">{result[0].collectionName}</h2>
-          <h3 data-testid="artist-name">{result[0].artistName}</h3>
-        </div>
-        <div>
-          {
-            result.length > 0 && result.map((e, index) => {
-              const { previewUrl, trackName, trackId } = e;
-              return (index > 0 && (
-                <MusicCard
-                  key={ index }
-                  previewUrl={ previewUrl }
-                  trackName={ trackName }
-                  trackId={ trackId }
-                  music={ e }
-                />
-              ));
-            })
-          }
+        <div className="flex m-20 justify-center">
+          <div className="flex flex-col mr-10">
+            <img src={ result[0].artworkUrl100 } alt={ result[0].collectionName } />
+            <h2
+              className="text-gray-800 text-md font-bold"
+              data-testid="album-name"
+            >
+              {result[0].collectionName}
+            </h2>
+            <h3 data-testid="artist-name">{result[0].artistName}</h3>
+          </div>
+          <div className="flex flex-col">
+            {
+              result.length > 0 && result.map((e, index) => {
+                const { previewUrl, trackName, trackId } = e;
+                return (index > 0 && (
+                  <MusicCard
+                    key={ index }
+                    previewUrl={ previewUrl }
+                    trackName={ trackName }
+                    trackId={ trackId }
+                    music={ e }
+                  />
+                ));
+              })
+            }
+          </div>
         </div>
       </div>
     );

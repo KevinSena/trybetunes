@@ -27,21 +27,23 @@ class Favorites extends Component {
     return (
       <div data-testid="page-favorites">
         <Header />
-        {
-          (
-            favorited.map((obj, index) => {
-              const { previewUrl, trackName, trackId } = obj;
-              return (
-                <MusicCardFav
-                  key={ index }
-                  previewUrl={ previewUrl }
-                  trackName={ trackName }
-                  trackId={ trackId }
-                  music={ obj }
-                />
-              );
-            }))
-        }
+        <div className="flex flex-col w-8/12 mx-auto my-20">
+          {
+            (
+              favorited.map((obj, index) => {
+                const { previewUrl, trackName, trackId } = obj;
+                return (
+                  <MusicCardFav
+                    key={ index }
+                    previewUrl={ previewUrl }
+                    trackName={ trackName }
+                    trackId={ trackId }
+                    music={ obj }
+                  />
+                );
+              }))
+          }
+        </div>
       </div>
     );
   }

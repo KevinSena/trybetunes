@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import { getUser, updateUser } from '../services/userAPI';
+import Loading from '../components/Loading';
 
 class ProfileEdit extends Component {
   constructor() {
@@ -95,35 +96,62 @@ class ProfileEdit extends Component {
                   placeholder="Insira um link"
                   data-testid="edit-input-image"
                   className="
-                  self-center"
+                  self-center
+                  border-2
+                  border-gray-300
+                  py-2
+                  px-4
+                  rounded"
                 />
               </div>
 
               <div className="flex flex-col mx-auto">
-                <h3 className="mt-10">Nome:</h3>
+                <h3 className="mt-10 font-black text-gray-800">Nome:</h3>
                 <input
                   name="name"
                   onChange={ this.handleChange }
                   value={ name }
                   type="text"
                   data-testid="edit-input-name"
+                  className="
+                  focus:bg-gray-200
+                  border-b-2
+                  border-gray-500
+                  py-2
+                  px-4
+                  outline-none"
                 />
 
-                <h3 className="mt-10">Email:</h3>
+                <h3 className="mt-10 font-black text-gray-800">Email:</h3>
                 <input
                   name="email"
                   onChange={ this.handleChange }
                   value={ email }
                   type="email"
                   data-testid="edit-input-email"
+                  className="
+                  focus:bg-gray-200
+                  border-b-2
+                  border-gray-500
+                  py-2
+                  px-4
+                  outline-none"
                 />
 
-                <h3 className="mt-10">Descrição:</h3>
+                <h3 className="mt-10 font-black text-gray-800">Descrição:</h3>
                 <textarea
                   name="description"
                   onChange={ this.handleChange }
                   value={ description }
                   data-testid="edit-input-description"
+                  className="
+                  focus:bg-gray-200
+                  border-b-2
+                  border-gray-500
+                  py-2
+                  px-4
+                  mb-6
+                  outline-none"
                 />
               </div>
 
@@ -143,9 +171,7 @@ class ProfileEdit extends Component {
                 Editar perfil
               </button>
             </form>
-          ) : (
-            <h1>{ loadText }</h1>
-          )
+          ) : <Loading />
         }
       </div>
     );

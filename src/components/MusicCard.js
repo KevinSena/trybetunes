@@ -27,12 +27,12 @@ class MusicCard extends Component {
     const { previewUrl, trackName, trackId, music } = this.props;
     const { submited, favorited } = this.state;
     return (
-      <div className="flex">
+      <div className="flex justify-between border-t-2 pt-2 mt-4">
         <p className="self-center">{trackName}</p>
         <audio data-testid="audio-component" src={ previewUrl } controls>
           <track kind="captions" />
         </audio>
-        <label htmlFor={ trackId }>
+        <label className="self-center" htmlFor={ trackId }>
           <input
             checked={ favorited }
             data-testid={ `checkbox-music-${trackId}` }

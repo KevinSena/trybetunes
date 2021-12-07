@@ -28,7 +28,7 @@ class MusicCardFav extends Component {
     const { submited, favorited } = this.state;
     if (favorited) {
       return (
-        <div className="flex">
+        <div className="flex justify-between border-t-2 pt-2 mt-4">
           <p className="self-center">{trackName}</p>
           <audio data-testid="audio-component" src={ previewUrl } controls>
             <track kind="captions" />

@@ -9,6 +9,7 @@ class Header extends Component {
 
     this.state = {
       name: '',
+      image: '',
     };
   }
 
@@ -17,19 +18,24 @@ class Header extends Component {
   }
 
   catchUser = async () => {
-    const response = await getUser().then((e) => e.name);
+    const response = await getUser();
     this.setState({
-      name: response,
+      name: response.name,
+      image: response.image,
     });
   }
 
   render() {
     const { location } = this.props;
-    const { name } = this.state;
+    const { name, image } = this.state;
     const linkStyle = {
       backgroundColor: '#036B52',
       color: 'white',
     };
+    const defaultStyle = {
+      backgroundColor: '#F0F2F5',
+    };
+
     return (
       <header className="flex flex-col w-full" data-testid="header-component">
         <div
@@ -42,7 +48,7 @@ class Header extends Component {
           w-full"
         >
           <div className="w-28">
-            <img src="https://s3-alpha-sig.figma.com/img/b9aa/b33b/90cfc7e08c97fce6f1d6e8abbfff6e6e?Expires=1638748800&Signature=RwsZVKrJOxbLdLkxy4mRU~3fBIbhioBK2vXiPWWLkghXWxhPRrMjwYvgcrWcUGKw8dE6d5FZuOSpxxIGp7VJA32noxfjjENI30DdQAxIn3E5HwqVR~Dbx4D80fhu0pKIShfzHoq8IQBPSX1n5kV47L0andrPmOwUwXUXwLPPrPSxysjMfyoFv-y2GGb-BZkmd~O8o4hBH4agVFzYW9nfgl2AXdocWthS~VEsKiCfBlkeRPxTHa0Bd-DPGnHq3wkeWuCA6KfZgy0Ykozrr79bUnBjZscpKK6WMvKyyivE3ipO0yzLUKfuDnPtg6y0hCQJBrzNJ2M94rzGvbAE2JWs9Q__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA" alt="branch" />
+            <img src="https://s3-alpha-sig.figma.com/img/b9aa/b33b/90cfc7e08c97fce6f1d6e8abbfff6e6e?Expires=1639958400&Signature=L4cDiuA1GBv22bUPnWQ1iJZS3UjxUrRM7UU8~3T22u0p~AiTCj1r9a8z0ZTyoG1R4-5vw5gguMdPEGtGXsfQfEi-JgkCUnZNxgk0EHbrAoFJFGE5OYVbD7kdyMf0id0R0x2OZnRiHB9lSMj20hFa7fR21pXHoiAprH8EoRw~5mBJ5YcZIAJ4nJEV6GT0TATJ49QRQISVG-UpXkcIkl7ftf-4OSH0hgpJH5bT-wrtw9VpyOjqC2Sr4reNkyIYcwnks-gcaG9YuVKDVz14kpCYYzj6j5Du-7bNGvROY-b1ES~EweQhZbfyIer6rw~khOnBx0seyzDmMtPrQCyGVY0WVw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA" alt="branch" />
           </div>
           <div
             className="
@@ -52,17 +58,31 @@ class Header extends Component {
             rounded-full
             bg-white"
           >
-            <i
-              className="
-              fas
-              fa-user
-              text-white
-              p-2
-              bg-green-600
-              rounded-full
-              self-center
-              mr-2"
-            />
+            {
+              image === '' ? (
+                <i
+                  className="
+                  fas
+                  fa-user
+                  text-white
+                  p-2
+                  bg-green-600
+                  rounded-full
+                  self-center
+                  mr-2"
+                />
+              ) : (
+                <img
+                  src={ image }
+                  alt={ name }
+                  className="
+                  w-10
+                  mr-2
+                  rounded-full
+                  self-center"
+                />
+              )
+            }
             {
               name === '' ? <p className="self-center">Carregando...</p>
                 : (
@@ -79,7 +99,7 @@ class Header extends Component {
           "
         >
           <Link
-            style={ location.pathname === '/search' ? linkStyle : {} }
+            style={ location.pathname === '/search' ? linkStyle : defaultStyle }
             to="/search"
             data-testid="link-to-search"
             className="
@@ -95,7 +115,7 @@ class Header extends Component {
             Pesquisa
           </Link>
           <Link
-            style={ location.pathname === '/favorites' ? linkStyle : {} }
+            style={ location.pathname === '/favorites' ? linkStyle : defaultStyle }
             to="/favorites"
             data-testid="link-to-favorites"
             className="
@@ -110,7 +130,7 @@ class Header extends Component {
             Favoritas
           </Link>
           <Link
-            style={ location.pathname === '/profile' ? linkStyle : {} }
+            style={ location.pathname === '/profile' ? linkStyle : defaultStyle }
             to="/profile"
             data-testid="link-to-profile"
             className="
