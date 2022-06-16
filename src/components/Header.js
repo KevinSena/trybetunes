@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getUser } from '../services/userAPI';
+import logo from '../assets/headerLogo.png';
 
 class Header extends Component {
   constructor() {
@@ -48,7 +49,7 @@ class Header extends Component {
           w-full"
         >
           <div className="w-28">
-            <img src="https://s3-alpha-sig.figma.com/img/b9aa/b33b/90cfc7e08c97fce6f1d6e8abbfff6e6e?Expires=1639958400&Signature=L4cDiuA1GBv22bUPnWQ1iJZS3UjxUrRM7UU8~3T22u0p~AiTCj1r9a8z0ZTyoG1R4-5vw5gguMdPEGtGXsfQfEi-JgkCUnZNxgk0EHbrAoFJFGE5OYVbD7kdyMf0id0R0x2OZnRiHB9lSMj20hFa7fR21pXHoiAprH8EoRw~5mBJ5YcZIAJ4nJEV6GT0TATJ49QRQISVG-UpXkcIkl7ftf-4OSH0hgpJH5bT-wrtw9VpyOjqC2Sr4reNkyIYcwnks-gcaG9YuVKDVz14kpCYYzj6j5Du-7bNGvROY-b1ES~EweQhZbfyIer6rw~khOnBx0seyzDmMtPrQCyGVY0WVw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA" alt="branch" />
+            <img src={ logo } alt="branch" />
           </div>
           <div
             className="
@@ -77,6 +78,7 @@ class Header extends Component {
                   alt={ name }
                   className="
                   w-10
+                  h-10
                   mr-2
                   rounded-full
                   self-center"
@@ -96,6 +98,7 @@ class Header extends Component {
         <div
           className="
           flex
+          flex-wrap
           "
         >
           <Link
@@ -103,7 +106,8 @@ class Header extends Component {
             to="/search"
             data-testid="link-to-search"
             className="
-            w-1/3
+            w-full
+            sm:w-1/3
             text-center
             p-4
             text-3xl
@@ -119,7 +123,8 @@ class Header extends Component {
             to="/favorites"
             data-testid="link-to-favorites"
             className="
-            w-1/3
+            w-full
+            sm:w-1/3
             text-center
             p-4
             text-3xl
@@ -134,7 +139,8 @@ class Header extends Component {
             to="/profile"
             data-testid="link-to-profile"
             className="
-            w-1/3 text-center
+            w-full
+            sm:w-1/3 text-center
             p-4
             text-3xl
             font-bold

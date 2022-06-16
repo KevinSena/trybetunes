@@ -28,12 +28,17 @@ class Album extends Component {
 
   render() {
     const { result } = this.state;
+    const imageUrl = result[0] !== ''
+      ? result[0].artworkUrl100.replaceAll('100x100', '500x500') : '';
     return (
       <div data-testid="page-album">
         <Header />
-        <div className="flex m-20 justify-center">
-          <div className="flex flex-col mr-10">
-            <img src={ result[0].artworkUrl100 } alt={ result[0].collectionName } />
+        <div className="flex flex-col md:flex-row m-20 justify-center">
+          <div className="flex flex-col mr-10 w-full md:w-1/3">
+            <img
+              src={ imageUrl }
+              alt={ result[0].collectionName }
+            />
             <h2
               className="text-gray-800 text-md font-bold"
               data-testid="album-name"
@@ -42,7 +47,7 @@ class Album extends Component {
             </h2>
             <h3 data-testid="artist-name">{result[0].artistName}</h3>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col w-full md:w-2/3">
             {
               result.length > 0 && result.map((e, index) => {
                 const { previewUrl, trackName, trackId } = e;

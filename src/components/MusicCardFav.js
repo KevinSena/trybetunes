@@ -29,7 +29,7 @@ class MusicCardFav extends Component {
     if (favorited) {
       return (
         <div className="flex justify-between border-t-2 pt-2 mt-4">
-          <p className="self-center">{trackName}</p>
+          <p className="self-center w-24">{trackName}</p>
           <audio data-testid="audio-component" src={ previewUrl } controls>
             <track kind="captions" />
           </audio>

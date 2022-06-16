@@ -23,7 +23,7 @@ const searchAlbumsAPI = async (artist) => {
       collectionId,
       collectionName,
       collectionPrice,
-      artworkUrl100,
+      artworkUrl100: artworkUrl100.replaceAll('100x100', '500x500'),
       releaseDate,
       trackCount,
     }),

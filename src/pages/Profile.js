@@ -59,6 +59,7 @@ class Profile extends Component {
                   data-testid="profile-image"
                   className="
                   w-40
+                  h-40
                   p-6
                   text-6xl
                   rounded-full

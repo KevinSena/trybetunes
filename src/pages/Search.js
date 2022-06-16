@@ -40,7 +40,7 @@ class Search extends Component {
     return (
       <div data-testid="page-search">
         <Header />
-        <div className="flex w-3/5 my-20 mx-auto">
+        <div className="flex flex-wrap sm:flex-nowrap w-3/5 my-20 mx-auto">
           <input
             name="search"
             type="search"
@@ -48,7 +48,8 @@ class Search extends Component {
             data-testid="search-artist-input"
             className="
             focus:outline-none
-            w-4/5
+            w-full
+            sm:w-4/5
             border
             rounded
             p-2
@@ -62,8 +63,11 @@ class Search extends Component {
             bg-blue-600
             text-white
             p-2
-            w-1/5
-            ml-2"
+            w-full
+            my-2
+            sm:w-1/5
+            sm:my-0
+            sm:ml-2"
             type="button"
             data-testid="search-artist-button"
             disabled={ search.length < 2 }
@@ -103,7 +107,7 @@ class Search extends Component {
                   shadow-xl
                   flex
                   flex-col
-                  w-1/6
+                  w-60
                   p-1
                   m-4"
                   key={ index }

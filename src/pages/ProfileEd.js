@@ -81,6 +81,7 @@ class ProfileEdit extends Component {
                       data-testid="profile-image"
                       className="
                       w-40
+                      h-40
                       p-6
                       text-6xl
                       rounded-full
@@ -165,8 +166,10 @@ class ProfileEdit extends Component {
                 p-2
                 w-40
                 mx-auto"
-                onClick={ () => updateUser({ name, email, image, description })
-                  .then(() => history.push('/profile')) }
+                onClick={ async () => {
+                  await updateUser({ name, email, image, description });
+                  history.push('/profile');
+                } }
               >
                 Editar perfil
               </button>
